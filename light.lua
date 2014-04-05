@@ -1238,13 +1238,7 @@ function love.light.newBody(p, type, ...)
 	end
 	-- set height map
 	o.setHeightMap = function(heightMap, strength)
-		o.normal = HeightMapToNormalMap(heightMap, strength)
-		o.normalWidth = o.normal:getWidth()
-		o.normalHeight = o.normal:getHeight()
-		o.nx = o.normalWidth * 0.5
-		o.ny = o.normalHeight * 0.5
-
-		p.isPixelShadows = true
+		o.setNormalMap(HeightMapToNormalMap(heightMap, strength))
 	end
 	-- generate flat normal map
 	o.generateNormalMapFlat = function(mode)
@@ -1273,13 +1267,7 @@ function love.light.newBody(p, type, ...)
 			end
 		end
 
-		o.normal = love.graphics.newImage(imgNormalData)
-		o.normalWidth = o.normal:getWidth()
-		o.normalHeight = o.normal:getHeight()
-		o.nx = o.normalWidth * 0.5
-		o.ny = o.normalHeight * 0.5
-
-		p.isPixelShadows = true
+		o.setNormalMap(love.graphics.newImage(imgNormalData))
 	end
 	-- generate faded normal map
 	o.generateNormalMapGradient = function(horizontalGradient, verticalGradient)
@@ -1319,23 +1307,11 @@ function love.light.newBody(p, type, ...)
 			end
 		end
 
-		o.normal = love.graphics.newImage(imgNormalData)
-		o.normalWidth = o.normal:getWidth()
-		o.normalHeight = o.normal:getHeight()
-		o.nx = o.normalWidth * 0.5
-		o.ny = o.normalHeight * 0.5
-
-		p.isPixelShadows = true
+		o.setNormalMap(love.graphics.newImage(imgNormalData))
 	end
 	-- generate normal map
 	o.generateNormalMap = function(strength)
-		o.normal = HeightMapToNormalMap(o.img, strength)
-		o.normalWidth = o.normal:getWidth()
-		o.normalHeight = o.normal:getHeight()
-		o.nx = o.normalWidth * 0.5
-		o.ny = o.normalHeight * 0.5
-
-		p.isPixelShadows = true
+		o.setNormalMap(HeightMapToNormalMap(o.img, strength))
 	end
 	-- set material
 	o.setMaterial = function(material)
