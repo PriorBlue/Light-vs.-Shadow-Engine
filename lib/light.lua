@@ -1470,7 +1470,7 @@ end
 
 function calculateShadows(light, body)
 	local shadowGeometry = {}
-	local shadowLength = 10000
+	local shadowLength = 100000
 
 	for i = 1, #body do
 		if body[i].shadowType == "rectangle" or body[i].shadowType == "polygon" then
